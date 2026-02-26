@@ -7,7 +7,7 @@ cpu=$(top -bn2 | awk -F',' '/^%Cpu/ {print 100 - $4}' | tail -n 1)
 echo "CPU Usage: $cpu%"
 
 # Memory Usage
-mem=$(free | awk '/Mem/ {printf("%.0f"), $3/$2 * 100}')
+mem=$(free | awk '/Mem/ {printf("%.0f" , ($2 - $7) / $2 * 100) }')
 echo "Memory Usage: $mem%"
 
 # Disk Usage
